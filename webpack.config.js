@@ -11,10 +11,14 @@ module.exports = {
     filename: "[name].[contenthash].js",
     clean: true,
   },
+  module: {
+    rules: [{ test: /\.css$/, use: ["style-loader", "css-loader"] }],
+  },
   plugins: [
     new HtmlWebpackPlugin({
       title: "First Webpack",
       filename: "index.html",
+      template: path.resolve(__dirname, "src/temp.html"),
     }),
   ],
 };
