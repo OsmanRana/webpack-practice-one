@@ -11,8 +11,18 @@ module.exports = {
     filename: "[name].[contenthash].js",
     clean: true,
   },
+  devtool: "inline-source-map",
+  devServer: {
+    static: path.resolve(__dirname, "dist"),
+    port: 5001,
+    open: true,
+    hot: true,
+  },
   module: {
-    rules: [{ test: /\.css$/, use: ["style-loader", "css-loader"] }],
+    rules: [
+        { test: /\.css$/, use: ["style-loader", "css-loader"] },
+        {test: /\.(svg|png|jpeg|jpg|webp|ico|gif)$/, type: 'asset/resource'}
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
